@@ -12,6 +12,12 @@
 
  启动失败也可尝试 docker-compose -f docker-compose2.yml up
 
+ 版本升级，使用最新镜像。
+ ```sh
+  $ docker compose stop
+  $ docker compose build --no-cache
+  $ docker compose up -d
+```
 
 成功运行后，访问 [http://127.0.0.1:9097](http://127.0.0.1:9097) 可以打开网页版记账程序，使用前请注册一个账户，默认的邀请码是111111（6个1）。
 
