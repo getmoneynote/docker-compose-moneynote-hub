@@ -8,6 +8,10 @@
   $ git clone --depth 1 https://github.com/getmoneynote/docker-compose-moneywhere.git
   $ docker compose up
 ```
+ 如果遇到启动失败，将docker停止后，重新执行docker compose up。
+
+ 启动失败也可尝试 docker-compose -f docker-compose2.yml up
+
 
 成功运行后，访问 [http://127.0.0.1:9097](http://127.0.0.1:9097) 可以打开网页版记账程序，使用前请注册一个账户，默认的邀请码是111111（6个1）。
 
