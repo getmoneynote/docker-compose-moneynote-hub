@@ -11,9 +11,9 @@ services:
       - moneywhere_mysql_data:/var/lib/mysql
 
   phpmyadmin:
-    depends_on:
-      - mysql
     image: phpmyadmin/phpmyadmin
+    links:
+      - mysql
     ports:
       - "8085:80"
     environment:
