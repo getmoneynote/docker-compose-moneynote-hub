@@ -2,13 +2,15 @@ version: '3'
 
 services:
   mysql:
-    build: ./mysql/
-    command: --init-file /data/1.sql
-    restart: always
+    image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: NWPkVrO2
+      MYSQL_DATABASE: moneywhere
+      MYSQL_USER: moneywhere
+      MYSQL_PASSWORD: YR1IZ0HW
     volumes:
       - moneywhere_mysql_data:/var/lib/mysql
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_general_ci']
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
