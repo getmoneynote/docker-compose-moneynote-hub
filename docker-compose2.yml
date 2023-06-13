@@ -4,10 +4,10 @@ services:
   mysql:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: NWPkVrO2
+      MYSQL_ROOT_PASSWORD: my_secret_password
       MYSQL_DATABASE: moneywhere
-      MYSQL_USER: moneywhere
-      MYSQL_PASSWORD: YR1IZ0HW
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: db_user_pass
     volumes:
       - moneywhere_mysql_data:/var/lib/mysql
     command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_general_ci']
@@ -26,8 +26,7 @@ services:
 
   moneywhere-api-user:
     depends_on:
-      mysql:
-        condition: service_healthy
+      - mysql
     image: markliu2018/moneywhere-api-user:latest
     env_file: api.env
 

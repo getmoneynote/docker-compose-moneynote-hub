@@ -2,8 +2,6 @@ version: '3.6'
 
 services:
   moneywhere-api-user:
-    depends_on:
-      - mysql
     image: markliu2018/moneywhere-api-user:latest
     env_file: api.env
 
