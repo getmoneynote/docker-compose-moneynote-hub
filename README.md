@@ -25,6 +25,8 @@
 
 如需备份数据，请访问 [http://127.0.0.1:8085](http://127.0.0.1:8085) 打开phpMyAdmin操作，数据库是MySQL5.7。
 
+phpMyAdmin登录的信息请对照api.env配置文件填写。
+
 请定期使用打开phpMyAdmin导出sql文件，备份你的记账数据！！！！！！！！
 
 邀请码可以在api.env文件修改 invite_code 变量，如遇端口冲突问题，请修改docker-compose.yml文件修改对应的端口。
