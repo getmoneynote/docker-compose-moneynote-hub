@@ -4,6 +4,8 @@
 
 请确保本机已安装docker compose。如遇到任何问题欢迎加入 QQ群: 639653091 讨论。
 
+启动前请修改docker-compose.yml数据的默认root密码，MYSQL_ROOT_PASSWORD修改为自己的密码。
+
 ```sh
   $ git clone --depth 1 https://github.com/getmoneynote/docker-compose-moneywhere.git
   $ docker compose up
