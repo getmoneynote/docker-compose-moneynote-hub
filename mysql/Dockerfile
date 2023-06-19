@@ -1,4 +1,5 @@
-FROM mysql:5.7
+#FROM mysql:5.7
+FROM registry.cn-hangzhou.aliyuncs.com/moneywhere/mysql:5.7
 
 #ARG TZ=UTC
 #ENV TZ ${TIMEZONE}
