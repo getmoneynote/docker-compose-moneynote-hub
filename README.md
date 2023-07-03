@@ -12,8 +12,6 @@
 ```
  如果遇到启动失败，将docker停止后，重新执行docker compose up。
 
- 启动失败也可尝试 docker-compose -f docker-compose2.yml up
-
  版本升级，使用最新镜像。
  ```sh
   $ docker compose stop
