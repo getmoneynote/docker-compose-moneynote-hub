@@ -12,7 +12,7 @@ services:
       - moneywhere_mysql_data:/var/lib/mysql
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/phpmyadmin:latest
     links:
       - mysql
     environment:
