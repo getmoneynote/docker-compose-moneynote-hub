@@ -14,6 +14,7 @@
 
  版本升级，使用最新镜像。
  ```sh
+  $ git pull
   $ docker compose stop
   $ docker compose build --no-cache
   $ docker compose up -d
