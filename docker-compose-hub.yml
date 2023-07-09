@@ -28,6 +28,9 @@ services:
       - mysql
     image: markliu2018/moneywhere-api-user:latest
     env_file: api.env
+    environment:
+      - TZ=Asia/Singapore
+      - DEBIAN_FRONTEND=noninteractive
 
   moneywhere-fe-user:
     links:
