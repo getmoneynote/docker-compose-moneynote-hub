@@ -31,3 +31,6 @@ phpMyAdmin登录的信息请对照api.env配置文件填写。
 请定期使用打开phpMyAdmin导出sql文件，备份你的记账数据！！！！！！！！
 
 邀请码可以在api.env文件修改 invite_code 变量，如遇端口冲突问题，请修改docker-compose.yml文件修改对应的端口。
+
+## QA
+1. 很多人安装遇到数据库的问题，有可能是之前安装过，有数据文件，且自己修改过root密码。 使用 docker volume ls 命令查看有没有moneywhere_mysql_data文件，如果有，可以自己修改为另外的数据文件，或者删除moneywhere_mysql_data
