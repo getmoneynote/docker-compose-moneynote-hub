@@ -1,5 +1,7 @@
 # 九快记账个人部署方案
 
+![Struct](https://raw.githubusercontent.com/getmoneynote/docker-compose-moneywhere/main/struct.png "Struct")
+
 本项目提供docker compose一键运行九快记账，搭建自己的记账环境。
 
 请确保本机已安装docker compose。如遇到任何问题欢迎加入 QQ群: 639653091 讨论。
