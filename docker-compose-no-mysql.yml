@@ -11,9 +11,5 @@ services:
     image: markliu2018/moneywhere-fe-user:latest
     environment:
       USER_API_HOST: http://moneywhere-api-user:9092
-      API_HOST: https://api.moneywhere.com/api/v1/user-api
     ports:
       - "9097:80"
-
-volumes:
-  moneywhere_mysql_data:
