@@ -2,14 +2,23 @@ version: '3.6'
 
 services:
   moneywhere-api-user:
-    image: markliu2018/moneywhere-api-user:latest
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-api-user:latest
     env_file: api.env
 
   moneywhere-fe-user:
-    depends_on:
+    links:
       - moneywhere-api-user
-    image: markliu2018/moneywhere-fe-user:latest
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-fe-user:latest
     environment:
       USER_API_HOST: http://moneywhere-api-user:9092
     ports:
       - "9097:80"
+
+  moneywhere-fe-user-mobile:
+    links:
+      - moneywhere-api-user
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-fe-user-mobile:latest
+    environment:
+      USER_API_HOST: http://moneywhere-api-user:9092
+    ports:
+      - "9098:80"
