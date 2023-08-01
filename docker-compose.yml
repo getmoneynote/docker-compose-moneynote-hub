@@ -10,6 +10,10 @@ services:
       MYSQL_DATABASE: moneywhere
     volumes:
       - moneywhere_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
 
   phpmyadmin:
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/phpmyadmin:latest
@@ -25,7 +29,8 @@ services:
 
   moneywhere-api-user:
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-api-user:latest
     env_file: api.env
     environment:
