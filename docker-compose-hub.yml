@@ -2,14 +2,24 @@ version: '3'
 
 services:
   mysql:
-    build: ./mysql/
-    command: --init-file /data/1.sql
+    image: mysql:5.7
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: NWPkVrO2
       MYSQL_DATABASE: moneywhere
+    command: [
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_general_ci',
+        '--max_connections=10000'
+    ]
     volumes:
       - moneywhere_mysql_data:/var/lib/mysql
+    healthcheck:
+#      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -pNWPkVrO2 | grep 'mysqld is alive' || exit 1"]
+#      test: ["CMD-SHELL", "mysqladmin ping | grep 'Access denied' || exit 1"]
+      timeout: 20s
+      retries: 10
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -25,12 +35,10 @@ services:
 
   moneywhere-api-user:
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     image: markliu2018/moneywhere-api-user:latest
     env_file: api.env
-    environment:
-      - TZ=Asia/Singapore
-      - DEBIAN_FRONTEND=noninteractive
 
   moneywhere-fe-user:
     links:
