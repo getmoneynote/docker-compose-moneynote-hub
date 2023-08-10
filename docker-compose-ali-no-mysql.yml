@@ -2,13 +2,13 @@ version: '3.0'
 
 services:
   moneywhere-api-user:
-    image: markliu2018/moneywhere-api-user:latest
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-api-user:latest
     env_file: api.env
 
   moneywhere-fe-user:
     links:
       - moneywhere-api-user
-    image: markliu2018/moneywhere-fe-user:latest
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-fe-user:latest
     environment:
       USER_API_HOST: http://moneywhere-api-user:9092
     ports:
@@ -17,7 +17,7 @@ services:
   moneywhere-fe-user-mobile:
     links:
       - moneywhere-api-user
-    image: markliu2018/moneywhere-fe-user-mobile:latest
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-fe-user-mobile:latest
     environment:
       USER_API_HOST: http://moneywhere-api-user:9092
     ports:

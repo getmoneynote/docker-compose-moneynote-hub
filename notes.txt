@@ -1,1 +1,2 @@
 docker-compose -f docker-compose-hub.yml up -d
+docker-compose -f docker-compose-no-mysql.yml up -d
