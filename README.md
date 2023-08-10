@@ -14,7 +14,13 @@
   $ git clone --depth 1 https://github.com/getmoneynote/docker-compose-moneywhere.git
   $ docker compose up
 ```
- 如果遇到启动失败，将docker停止后，重新执行docker compose up。
+如果遇到启动失败，将docker停止后，重新执行docker compose up。
+
+如果docker hub镜像无法访问，请使用阿里云镜像：
+
+```sh
+  $ docker compose -f docker-compose-ali.yml up -d
+```
 
  版本升级，使用最新镜像。
  ```sh
