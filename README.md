@@ -4,17 +4,25 @@
 
 本项目提供docker compose一键运行九快记账，搭建自己的记账环境。
 
-请确保本机已安装docker compose。如遇到任何问题欢迎加入 QQ群: 639653091 讨论。
+部署前，请确保已安装docker compose。如遇到任何问题欢迎加入 QQ群: 639653091 讨论。
 
-启动前请修改docker-compose.yml数据的默认root密码，MYSQL_ROOT_PASSWORD修改为自己的密码，同时修改api.env文件。
-
-为防止恶意注册，请修改api.env中的邀请码。如遇端口冲突问题，请修改docker-compose.yml文件修改对应的端口。
+部署步骤：
+1. 请下载本项目源代码，使用git命令或直接下载源代码。
 
 ```sh
-  $ git clone --depth 1 https://github.com/getmoneynote/docker-compose-moneywhere.git
-  $ docker compose up
+  $ git clone https://github.com/getmoneynote/docker-compose-moneywhere.git
 ```
-如果遇到启动失败，将docker停止后，重新执行docker compose up。
+
+2. 未保证数据安全问题，请修改数据库默认密码，一共3个地方需要修改。
+    1. docker-compose.yml文件 MYSQL_ROOT_PASSWORD变量
+   2. docker-compose.yml文件 healthcheck -p密码
+   3. api.env DB_PASSWORD变量修改
+3. 为防止恶意注册，请修改默认邀请码。api.env文件，invite_code变量修改
+4. 执行命令
+
+```sh
+  $ docker compose up -d
+```
 
 如果docker hub镜像无法访问，请使用阿里云镜像：
 
@@ -22,9 +30,8 @@
   $ docker compose -f docker-compose-ali.yml up -d
 ```
 
- 版本升级，使用最新镜像。
- ```sh
-  $ git pull
+版本升级，使用最新镜像。
+```sh
   $ docker compose stop
   $ docker compose build --no-cache
   $ docker compose up -d
