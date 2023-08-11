@@ -5,7 +5,7 @@ services:
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-api-user:latest
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    env_file: api.env
+    env_file: api-no-mysql.env
 
   moneywhere-fe-user:
     links:
