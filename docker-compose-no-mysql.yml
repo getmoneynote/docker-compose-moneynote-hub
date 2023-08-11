@@ -3,6 +3,8 @@ version: '3.0'
 services:
   moneywhere-api-user:
     image: markliu2018/moneywhere-api-user:latest
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     env_file: api.env
 
   moneywhere-fe-user:
