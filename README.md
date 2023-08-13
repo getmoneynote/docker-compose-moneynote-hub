@@ -8,7 +8,7 @@
 1. 请下载本项目源代码，使用git命令或直接下载源代码。
 
 ```sh
-  $ git clone https://github.com/getmoneynote/docker-compose-moneywhere.git
+  git clone https://github.com/getmoneynote/docker-compose-moneywhere.git
 ```
 
 2. 为保证数据安全问题，请修改数据库默认密码，一共3个地方需要修改。
@@ -19,18 +19,18 @@
 4. 执行命令
 
 ```sh
-  $ docker-compose up -d
+  docker-compose up -d
 ```
 
 如果docker hub镜像无法访问，请使用阿里云镜像：
 
 ```sh
-  $ docker-compose -f docker-compose-ali.yml up -d
+  docker-compose -f docker-compose-ali.yml up -d
 ```
 
 版本升级，使用最新镜像。
 ```sh
-  $ docker-compose pull  && docker-compose up -d
+  docker-compose pull  && docker-compose up -d
 ```
 
 成功运行后，访问 [http://127.0.0.1:9097](http://127.0.0.1:9097) 可以打开网页版记账程序，使用前请注册一个账户，默认的邀请码是111111（6个1）, 为防止被恶意注册，请修改默认邀请码。
