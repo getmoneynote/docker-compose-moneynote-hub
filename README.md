@@ -11,7 +11,7 @@
   $ git clone https://github.com/getmoneynote/docker-compose-moneywhere.git
 ```
 
-2. 未保证数据安全问题，请修改数据库默认密码，一共3个地方需要修改。
+2. 为保证数据安全问题，请修改数据库默认密码，一共3个地方需要修改。
     1. docker-compose.yml文件 MYSQL_ROOT_PASSWORD变量
    2. docker-compose.yml文件 healthcheck -p密码
    3. api.env DB_PASSWORD变量修改
