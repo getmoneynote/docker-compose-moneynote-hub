@@ -19,20 +19,18 @@
 4. 执行命令
 
 ```sh
-  $ docker compose up -d
+  $ docker-compose up -d
 ```
 
 如果docker hub镜像无法访问，请使用阿里云镜像：
 
 ```sh
-  $ docker compose -f docker-compose-ali.yml up -d
+  $ docker-compose -f docker-compose-ali.yml up -d
 ```
 
 版本升级，使用最新镜像。
 ```sh
-  $ docker compose stop
-  $ docker compose build --no-cache
-  $ docker compose up -d
+  $ docker-compose pull  && docker-compose up -d
 ```
 
 成功运行后，访问 [http://127.0.0.1:9097](http://127.0.0.1:9097) 可以打开网页版记账程序，使用前请注册一个账户，默认的邀请码是111111（6个1）, 为防止被恶意注册，请修改默认邀请码。
