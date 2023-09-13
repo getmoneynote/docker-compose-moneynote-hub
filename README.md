@@ -29,10 +29,10 @@ docker-compose -f docker-compose-no-mysql.yml up -d
 ```
 
 
-如果docker hub镜像无法访问，请使用阿里云镜像：
+默认使用阿里云镜像，适合运行在中国大陆的服务器，如果服务器在境外，推荐使用docker hub镜像：
 
 ```sh
-docker-compose -f docker-compose-ali.yml up -d
+docker-compose -f docker-compose-hub.yml up -d
 ```
 
 版本升级，使用最新镜像。
@@ -53,3 +53,6 @@ phpMyAdmin登录的信息请对照api.env配置文件填写。请定期使用php
 
 ## QA
 1. 很多人安装遇到数据库的问题，有可能是之前安装过，有数据文件，且自己修改过root密码。 使用 docker volume ls 命令查看有没有moneywhere_mysql_data文件，如果有，可以自己修改为另外的数据文件，或者删除moneywhere_mysql_data
+
+## 参考资料
+[安装docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-centos-7)
