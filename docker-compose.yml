@@ -13,6 +13,8 @@ services:
       '--max_connections=10000'
       '--default-authentication-plugin=mysql_native_password'
     ]
+    volumes:
+      - moneywhere_mysql_data:/var/lib/mysql
 
   phpmyadmin:
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/phpmyadmin:latest
