@@ -11,15 +11,10 @@ services:
         '--character-set-server=utf8mb4',
         '--collation-server=utf8mb4_general_ci',
         '--max_connections=10000'
+        '--default-authentication-plugin=mysql_native_password'
     ]
     volumes:
       - moneywhere_mysql_data:/var/lib/mysql
-    healthcheck:
-#      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
-      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -pNWPkVrO2 | grep 'mysqld is alive' || exit 1"]
-#      test: ["CMD-SHELL", "mysqladmin ping | grep 'Access denied' || exit 1"]
-      timeout: 20s
-      retries: 10
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
