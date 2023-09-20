@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3'
 
 services:
   mysql:
@@ -10,9 +10,11 @@ services:
     command: [
       '--character-set-server=utf8mb4',
       '--collation-server=utf8mb4_general_ci',
-      '--max_connections=10000'
+      '--max_connections=10000',
       '--default-authentication-plugin=mysql_native_password'
     ]
+    volumes:
+      - moneywhere_mysql_data:/var/lib/mysql
 
   phpmyadmin:
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/phpmyadmin:latest
