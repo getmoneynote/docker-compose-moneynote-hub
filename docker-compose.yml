@@ -5,7 +5,7 @@ services:
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/mysql:5.7
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: NWPkVrO2
+      MYSQL_ROOT_PASSWORD: 111111
       MYSQL_DATABASE: moneywhere
     command: [
       '--character-set-server=utf8mb4',

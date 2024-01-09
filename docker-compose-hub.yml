@@ -5,7 +5,7 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: NWPkVrO2
+      MYSQL_ROOT_PASSWORD: 111111
       MYSQL_DATABASE: moneywhere
     command: [
         '--character-set-server=utf8mb4',
@@ -29,9 +29,8 @@ services:
       - "8085:80"
 
   moneywhere-api-user:
-    depends_on:
-      mysql:
-        condition: service_healthy
+    links:
+      - mysql
     image: markliu2018/moneywhere-api-user:latest
     env_file: api.env
 
