@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mysql:
-    image: mysql:5.7
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/mysql:5.7
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 111111
@@ -17,12 +17,10 @@ services:
       - moneywhere_mysql_data:/var/lib/mysql
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/phpmyadmin:latest
     links:
       - mysql
     environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
       PMA_ARBITRARY: 1
     restart: always
     ports:
@@ -31,13 +29,13 @@ services:
   moneywhere-api-user:
     links:
       - mysql
-    image: markliu2018/moneywhere-api-user:latest
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-api-user:latest
     env_file: api.env
 
   moneywhere-fe-user:
     links:
       - moneywhere-api-user
-    image: markliu2018/moneywhere-fe-user:latest
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-fe-user:latest
     environment:
       USER_API_HOST: http://moneywhere-api-user:9092
     ports:
@@ -46,7 +44,7 @@ services:
   moneywhere-fe-user-mobile:
     links:
       - moneywhere-api-user
-    image: markliu2018/moneywhere-fe-user-mobile:latest
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-fe-user-mobile:latest
     environment:
       USER_API_HOST: http://moneywhere-api-user:9092
     ports:
