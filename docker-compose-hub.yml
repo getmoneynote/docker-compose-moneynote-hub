@@ -24,13 +24,15 @@ services:
       PMA_ARBITRARY: 1
     restart: always
     ports:
-      - "8085:80"
+      - "43741:80"
 
   moneywhere-api-user:
     links:
       - mysql
     image: markliu2018/moneywhere-api-user:latest
     env_file: api.env
+    ports:
+      - "43742:9092"
 
   moneywhere-fe-user:
     links:
@@ -39,7 +41,7 @@ services:
     environment:
       USER_API_HOST: http://moneywhere-api-user:9092
     ports:
-      - "9097:80"
+      - "43743:80"
 
   moneywhere-fe-user-mobile:
     links:
@@ -48,7 +50,7 @@ services:
     environment:
       USER_API_HOST: http://moneywhere-api-user:9092
     ports:
-      - "9098:80"
+      - "43744:80"
 
 volumes:
   moneywhere_mysql_data:
