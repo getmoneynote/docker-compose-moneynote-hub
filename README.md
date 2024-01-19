@@ -27,11 +27,10 @@ docker compose up -d
 docker compose -f docker-compose-no-mysql.yml up -d
 ```
 
-
-默认使用阿里云镜像，适合运行在中国大陆的服务器，如果服务器在境外，推荐使用docker hub镜像：
+默认使用Docker Hub官方网站镜像，中国大陆可能出现无法拉去镜像，可尝试使用阿里云镜像。项目运行后，本身不依赖任何外部第三方服务。
 
 ```sh
-docker compose -f docker-compose-hub.yml up -d
+docker compose -f docker-compose-ali.yml up -d
 ```
 
 版本升级，使用最新镜像。
