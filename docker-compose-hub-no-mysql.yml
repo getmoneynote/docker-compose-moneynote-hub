@@ -2,6 +2,7 @@ version: '2.1'
 
 services:
   moneywhere-api-user:
+    container_name: moneywhere_api
     image: markliu2018/moneywhere-api-user:latest
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -10,6 +11,7 @@ services:
       - "43742:9092"
 
   moneywhere-fe-user:
+    container_name: moneywhere_fe
     links:
       - moneywhere-api-user
     image: markliu2018/moneywhere-fe-user:latest
@@ -19,6 +21,7 @@ services:
       - "43743:80"
 
   moneywhere-fe-user-mobile:
+    container_name: moneywhere_fe_mobile
     links:
       - moneywhere-api-user
     image: markliu2018/moneywhere-fe-user-mobile:latest

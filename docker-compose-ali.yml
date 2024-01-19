@@ -2,6 +2,7 @@ version: '3'
 
 services:
   mysql:
+    container_name: moneywhere_mysql
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/mysql:5.7
     restart: always
     environment:
@@ -19,6 +20,7 @@ services:
       - "43740:3306"
 
   phpmyadmin:
+    container_name: moneywhere_phpmyadmin
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/phpmyadmin:latest
     links:
       - mysql
@@ -29,6 +31,7 @@ services:
       - "43741:80"
 
   moneywhere-api-user:
+    container_name: moneywhere_api
     links:
       - mysql
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-api-user:latest
@@ -37,6 +40,7 @@ services:
       - "43742:9092"
 
   moneywhere-fe-user:
+    container_name: moneywhere_fe
     links:
       - moneywhere-api-user
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-fe-user:latest
@@ -46,6 +50,7 @@ services:
       - "43743:80"
 
   moneywhere-fe-user-mobile:
+    container_name: moneywhere_fe_mobile
     links:
       - moneywhere-api-user
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-fe-user-mobile:latest
