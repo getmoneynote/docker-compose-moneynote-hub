@@ -4,42 +4,79 @@
 
 部署前，请确保已安装docker compose。如遇到任何问题欢迎加入 QQ群: 639653091 讨论。
 
-部署步骤：
+### 部署步骤：
 1. 请下载本项目源代码，使用git命令或直接下载源代码。
 
 ```sh
 git clone https://github.com/getmoneynote/docker-compose-moneywhere.git && cd docker-compose-moneywhere
 ```
 
-2. 为保证数据安全问题，请修改数据库默认密码，一共2个地方需要修改。
-   1. docker-compose.yml文件 MYSQL_ROOT_PASSWORD变量
-   2. api.env DB_PASSWORD变量修改
-3. 为防止恶意注册，请修改默认邀请码。api.env文件，invite_code变量修改
+2. 为保证数据安全问题，请修改数据库默认密码。api.env -> DB_PASSWORD
+3. 为防止恶意注册，请修改默认邀请码。api.env -> invite_code
 4. 执行命令
 
 ```sh
-docker compose up -d
+docker compose --env-file api.env up -d
 ```
 
-如果已有mysql服务，想使用已存在的mysql服务，请修改项目的mysql相关配置，执行命令
+如果已有mysql服务，想使用已存在的mysql服务，请修改api-no-mysql.env文件为对应数据库信息，执行命令
 
 ```sh
-docker compose -f docker-compose-no-mysql.yml up -d
+docker compose --env-file api-no-mysql.env -f docker-compose-no-mysql.yml up -d
 ```
 
 默认使用Docker Hub官方网站镜像，中国大陆可能出现无法拉去镜像，可尝试使用阿里云镜像。项目运行后，本身不依赖任何外部第三方服务。
 
 ```sh
-docker compose -f docker-compose-ali.yml up -d
+docker compose --env-file api.env -f docker-compose-ali.yml up -d
 ```
 
 版本升级，使用最新镜像。
 ```sh
-docker compose pull && docker compose up -d
+docker compose pull && docker compose --env-file api.env up -d
 ```
+
+
+#### docker命令说明
+docker hub with mysql 启动
 ```sh
-docker compose -f docker-compose-no-mysql.yml pull && docker compose -f docker-compose-no-mysql.yml up -d
+docker compose --env-file api.env -f docker-compose-hub.yml up -d
 ```
+docker hub no mysql 启动
+```sh
+docker-compose --env-file api-no-mysql -f docker-compose-hub-no-mysql.yml up -d
+```
+
+阿里云 with mysql 启动
+```sh
+docker compose --env-file api.env -f docker-compose-ali.yml up -d
+```
+
+阿里云 no mysql 启动
+```sh
+docker-compose --env-file api-no-mysql.env -f docker-compose-ali-no-mysql.yml up -d
+```
+
+docker hub with mysql 升级
+```sh
+docker compose -f docker-compose-hub.yml pull && docker compose --env-file api.env -f docker-compose-hub.yml up -d
+```
+
+docker hub no mysql 升级
+```sh
+docker compose -f docker-compose-hub-no-mysql.yml pull && docker-compose --env-file api-no-mysql -f docker-compose-hub-no-mysql.yml up -d
+```
+
+阿里云 with mysql 升级
+```sh
+docker compose -f docker-compose-ali.yml pull && docker compose --env-file api.env -f docker-compose-ali.yml up -d
+```
+
+阿里云 no mysql 升级
+```sh
+docker compose -f docker-compose-ali-no-mysql.yml pull && docker-compose --env-file api-no-mysql.env -f docker-compose-ali-no-mysql.yml up -d
+```
+
 
 成功运行后，访问 [http://127.0.0.1:43743](http://127.0.0.1:43743) 可以打开网页版记账程序，使用前请注册一个账户，默认的邀请码是111111（6个1）, 为防止被恶意注册，请修改默认邀请码。
 

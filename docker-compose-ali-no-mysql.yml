@@ -4,6 +4,7 @@ services:
   moneywhere-api-user:
     container_name: moneywhere_api
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-api-user:latest
+    restart: always
     extra_hosts:
       - "host.docker.internal:host-gateway"
     env_file: api-no-mysql.env
@@ -15,6 +16,7 @@ services:
     links:
       - moneywhere-api-user
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-fe-user:latest
+    restart: always
     environment:
       USER_API_HOST: http://moneywhere-api-user:9092
     ports:
@@ -25,6 +27,7 @@ services:
     links:
       - moneywhere-api-user
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-fe-user-mobile:latest
+    restart: always
     environment:
       USER_API_HOST: http://moneywhere-api-user:9092
     ports:

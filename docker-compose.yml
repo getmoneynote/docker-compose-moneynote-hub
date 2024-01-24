@@ -4,10 +4,11 @@ services:
   mysql:
     container_name: moneywhere_mysql
     image: mysql:5.7
+    env_file: api.env
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 111111
-      MYSQL_DATABASE: moneywhere
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
     command: [
       '--character-set-server=utf8mb4',
       '--collation-server=utf8mb4_general_ci',
