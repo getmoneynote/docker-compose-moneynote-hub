@@ -38,7 +38,7 @@ docker compose -f docker-compose-ali.yml up -d
 docker compose pull && docker compose up -d
 ```
 ```sh
-docker compose pull && docker compose -f docker-compose-no-mysql.yml up -d
+docker compose -f docker-compose-no-mysql.yml pull && docker compose -f docker-compose-no-mysql.yml up -d
 ```
 
 成功运行后，访问 [http://127.0.0.1:43743](http://127.0.0.1:43743) 可以打开网页版记账程序，使用前请注册一个账户，默认的邀请码是111111（6个1）, 为防止被恶意注册，请修改默认邀请码。
