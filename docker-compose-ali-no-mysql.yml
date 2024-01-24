@@ -9,7 +9,7 @@ services:
       - "host.docker.internal:host-gateway"
     env_file: api-no-mysql.env
     ports:
-      - "43742:80"
+      - "43742:9092"
 
   moneywhere-fe-user:
     container_name: moneywhere_fe
@@ -20,7 +20,7 @@ services:
     environment:
       USER_API_HOST: http://moneywhere-api-user:9092
     ports:
-      - "43743:9092"
+      - "43743:80"
 
   moneywhere-fe-user-mobile:
     container_name: moneywhere_fe_mobile
