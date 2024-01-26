@@ -3,7 +3,7 @@ version: '3'
 services:
   moneywhere:
     container_name: moneywhere
-    image: markliu2018/moneywhere-all-no-mysql:latest
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-all-no-mysql:latest
     restart: always
     environment:
       - DB_HOST=host.docker.internal

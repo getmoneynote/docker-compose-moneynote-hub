@@ -3,7 +3,7 @@ version: '3'
 services:
   mysql:
     container_name: moneywhere_mysql
-    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/mysql:5.7
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/mysql8:latest
     env_file:
       - api.env
     restart: always
@@ -23,7 +23,7 @@ services:
 
   phpmyadmin:
     container_name: moneywhere_phpmyadmin
-    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/phpmyadmin:latest
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/phpmyadmin5:latest
     links:
       - mysql
     environment:
