@@ -115,6 +115,7 @@ phpMyAdmin登录的信息请对照api.env配置文件填写。请定期使用php
 
 
 #### docker命令说明
+
 docker hub with mysql 启动
 ```sh
 docker compose --env-file api.env -f docker-compose-hub.yml up -d
@@ -192,8 +193,9 @@ docker compose --env-file api-no-mysql.env -f docker-compose-all-no-mysql-ali.ym
 
 阿里云 docker 3 in 1 升级
 ```sh
-docker compose -f docker-compose-all-ali.yml pull && docker compose --env-file api-no-mysql.env -f docker-compose-all-no-mysql-ali.yml up -d
+docker compose -f docker-compose-all-no-mysql-ali.yml pull && docker compose --env-file api-no-mysql.env -f docker-compose-all-no-mysql-ali.yml up -d
 ```
+
 
 ## QA
 1. 很多人安装遇到数据库的问题，有可能是之前安装过，有数据文件，且自己修改过root密码。 使用 docker volume ls 命令查看有没有moneywhere_mysql_data文件，如果有，可以自己修改为另外的数据文件，或者删除moneywhere_mysql_data
