@@ -6,12 +6,12 @@ services:
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-all-no-mysql:latest
     restart: always
     environment:
-      - DB_HOST=host.docker.internal
-      - DB_PORT=3306
-      - DB_NAME=moneywhere
-      - DB_USER=root
-      - DB_PASSWORD=111111
-      - invite_code=111111
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - invite_code=${invite_code}
     ports:
       - "43742:9092"
       - "43743:81"

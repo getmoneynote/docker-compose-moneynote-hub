@@ -14,7 +14,7 @@
 
 阿里云镜像启动（适合中国大陆）
 ```sh
-docker run -d \
+docker run --name moneywhere -d \
     -e DB_PASSWORD=78p7gkc1 \
 	-e invite_code=111111 \
 	-v moneywhere_mysql_data:/var/lib/mysql \
@@ -27,7 +27,7 @@ docker run -d \
 ```
 docker hub镜像启动（适合境外用户）
 ```sh
-docker run -d \
+docker run --name moneywhere -d \
     -e DB_PASSWORD=78p7gkc1 \
 	-e invite_code=111111 \
 	-v moneywhere_mysql_data:/var/lib/mysql \
@@ -44,7 +44,7 @@ docker run -d \
 阿里云镜像启动（适合中国大陆，此镜像无mysql服务，请将参数修改为自己的mysql服务。）
 
 ```sh
-docker run -d \
+docker run --name moneywhere -d \
 	-e DB_HOST=host.docker.internal \
 	-e DB_PORT=3306 \
 	-e DB_NAME=moneywhere \
@@ -59,7 +59,7 @@ docker run -d \
 
 docker hub镜像启动（适合境外用户，此镜像无mysql服务，请将参数修改为自己的mysql服务。）
 ```sh
-docker run -d \
+docker run --name moneywhere -d \
 	-e DB_HOST=host.docker.internal \
 	-e DB_PORT=3306 \
 	-e DB_NAME=moneywhere \
