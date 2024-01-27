@@ -45,11 +45,11 @@ docker run --name moneywhere -d \
 
 ```sh
 docker run --name moneywhere -d \
-	-e DB_HOST=host.docker.internal \
+	-e DB_HOST=your_ip \
 	-e DB_PORT=3306 \
 	-e DB_NAME=moneywhere \
 	-e DB_USER=root \
-    -e DB_PASSWORD=111111 \
+    -e DB_PASSWORD=your_password \
 	-e invite_code=111111 \
 	-p 43742:9092 \
 	-p 43743:81 \
@@ -60,11 +60,11 @@ docker run --name moneywhere -d \
 docker hub镜像启动（适合境外用户，此镜像无mysql服务，请将参数修改为自己的mysql服务。）
 ```sh
 docker run --name moneywhere -d \
-	-e DB_HOST=host.docker.internal \
+	-e DB_HOST=your_ip \
 	-e DB_PORT=3306 \
 	-e DB_NAME=moneywhere \
 	-e DB_USER=root \
-    -e DB_PASSWORD=111111 \
+    -e DB_PASSWORD=your_password \
 	-e invite_code=111111 \
 	-p 43742:9092 \
 	-p 43743:81 \
@@ -72,7 +72,7 @@ docker run --name moneywhere -d \
 	markliu2018/moneywhere-all-no-mysql:latest
 ```
 
-### docker compose 启动
+### docker compose 启动（推荐）
 
 1. 请下载本项目源代码，使用git命令或直接下载源代码。
 
@@ -157,45 +157,43 @@ docker compose --env-file api-no-mysql.env -f docker-compose-ali-no-mysql.yml pu
 
 docker 5 in 1 hub 启动
 ```sh
-docker compose -f docker-compose-all-hub.yml up -d
+docker compose --env-file api.env -f docker-compose-all-hub.yml up -d
 ```
 
 docker 5 in 1 hub 升级
 ```sh
-docker compose -f docker-compose-all-hub.yml pull && docker compose -f docker-compose-all-hub.yml up -d
+docker compose -f docker-compose-all-hub.yml pull && docker compose --env-file api.env -f docker-compose-all-hub.yml up -d
 ```
 
 docker 3 in 1 hub 启动
 ```sh
-docker compose -f docker-compose-all-no-mysql-hub.yml up -d
+docker compose --env-file api-no-mysql.env -f docker-compose-all-no-mysql-hub.yml up -d
 ```
 
 docker 3 in 1 hub 升级
 ```sh
-docker compose -f docker-compose-all-hub.yml pull && docker compose -f docker-compose-all-no-mysql-hub.yml up -d
+docker compose -f docker-compose-all-hub.yml pull && docker compose --env-file api-no-mysql.env -f docker-compose-all-no-mysql-hub.yml up -d
 ```
-
 
 阿里云 docker 5 in 1 启动
 ```sh
-docker compose -f docker-compose-all-ali.yml up -d
+docker compose --env-file api.env -f docker-compose-all-ali.yml up -d
 ```
 
 阿里云 docker 5 in 1 升级
 ```sh
-docker compose -f docker-compose-all-ali.yml pull && docker compose -f docker-compose-all-ali.yml up -d
+docker compose -f docker-compose-all-ali.yml pull && docker compose --env-file api.env -f docker-compose-all-ali.yml up -d
 ```
 
 阿里云 docker 3 in 1 启动
 ```sh
-docker compose -f docker-compose-all-no-mysql-ali.yml up -d
+docker compose --env-file api-no-mysql.env -f docker-compose-all-no-mysql-ali.yml up -d
 ```
 
 阿里云 docker 3 in 1 升级
 ```sh
-docker compose -f docker-compose-all-ali.yml pull && docker compose -f docker-compose-all-no-mysql-ali.yml up -d
+docker compose -f docker-compose-all-ali.yml pull && docker compose --env-file api-no-mysql.env -f docker-compose-all-no-mysql-ali.yml up -d
 ```
-
 
 ## QA
 1. 很多人安装遇到数据库的问题，有可能是之前安装过，有数据文件，且自己修改过root密码。 使用 docker volume ls 命令查看有没有moneywhere_mysql_data文件，如果有，可以自己修改为另外的数据文件，或者删除moneywhere_mysql_data

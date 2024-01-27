@@ -5,13 +5,15 @@ services:
     container_name: moneywhere
     image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-all-no-mysql:latest
     restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment:
-      - DB_HOST=${DB_HOST}
-      - DB_PORT=${DB_PORT}
-      - DB_NAME=${DB_NAME}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - invite_code=${invite_code}
+      - DB_HOST=${DB_HOST:-host.docker.internal}
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_NAME=${DB_NAME:-moneywhere}
+      - DB_USER=${DB_USER:-root}
+      - DB_PASSWORD=${DB_PASSWORD:-78p7gkc1}
+      - invite_code=${invite_code:-111111}
     ports:
       - "43742:9092"
       - "43743:81"
