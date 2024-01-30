@@ -14,29 +14,11 @@
 
 阿里云镜像启动（适合中国大陆）
 ```sh
-docker run --name moneywhere -d \
-    -e DB_PASSWORD=78p7gkc1 \
-	-e invite_code=111111 \
-	-v moneywhere_mysql_data:/var/lib/mysql \
-	-p 43740:3306 \
-	-p 43741:80 \
-	-p 43742:9092 \
-	-p 43743:81 \
-	-p 43744:82 \
-	registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-all:latest
+docker run --name moneywhere -e DB_PASSWORD=78p7gkc1 -e invite_code=111111 -v moneywhere_mysql_data:/var/lib/mysql -p 43740:3306 -p 43741:80 -p 43742:9092 -p 43743:81 -p 43744:82 registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-all:latest
 ```
 docker hub镜像启动（适合境外用户）
 ```sh
-docker run --name moneywhere -d \
-    -e DB_PASSWORD=78p7gkc1 \
-	-e invite_code=111111 \
-	-v moneywhere_mysql_data:/var/lib/mysql \
-	-p 43740:3306 \
-	-p 43741:80 \
-	-p 43742:9092 \
-	-p 43743:81 \
-	-p 43744:82 \
-	markliu2018/moneywhere-all:latest
+docker run --name moneywhere -e DB_PASSWORD=78p7gkc1 -e invite_code=111111 -v moneywhere_mysql_data:/var/lib/mysql -p 43740:3306 -p 43741:80 -p 43742:9092 -p 43743:81 -p 43744:82 markliu2018/moneywhere-all:latest
 ```
 
 如果已有mysql服务，可使用不带mysql的镜像启动。
