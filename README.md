@@ -98,7 +98,7 @@ phpMyAdmin登录的信息请对照api.env配置文件填写。请定期使用php
 
 #### docker命令说明
 
-docker hub with mysql 启动
+docker hub with mysql 启动 （支持arm）
 ```sh
 docker compose --env-file api.env -f docker-compose-hub.yml up -d
 ```
@@ -118,7 +118,7 @@ docker hub no mysql 升级
 docker compose --env-file api-no-mysql.env -f docker-compose-hub-no-mysql.yml pull && docker compose --env-file api-no-mysql.env -f docker-compose-hub-no-mysql.yml up -d
 ```
 
-阿里云 with mysql 启动
+阿里云 with mysql 启动  （支持arm）
 ```sh
 docker compose --env-file api.env -f docker-compose-ali.yml up -d
 ```
