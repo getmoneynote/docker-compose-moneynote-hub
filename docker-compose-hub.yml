@@ -3,7 +3,7 @@ version: '3'
 services:
   mysql:
     container_name: moneywhere_mysql
-    image: mysql:8.0
+    image: markliu2018/mysql5-arm:latest
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD= ${DB_PASSWORD:-78p7gkc1}
@@ -19,7 +19,7 @@ services:
 
   phpmyadmin:
     container_name: moneywhere_phpmyadmin
-    image: phpmyadmin/phpmyadmin
+    image: markliu2018/phpmyadmin5:latest
     restart: always
     links:
       - mysql

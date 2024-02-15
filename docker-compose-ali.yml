@@ -3,7 +3,7 @@ version: '3'
 services:
   mysql:
     container_name: moneywhere_mysql
-    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/mysql8:latest
+    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/mysql5-arm:latest
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD:-78p7gkc1}
