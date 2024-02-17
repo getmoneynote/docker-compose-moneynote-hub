@@ -2,24 +2,24 @@ version: '3'
 
 services:
   mysql:
-    container_name: moneywhere_mysql
-    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/mysql5-arm:latest
+    container_name: moneynote_mysql
+    image: registry.cn-hangzhou.aliyuncs.com/moneynote/mysql5-arm:latest
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD:-78p7gkc1}
-      - MYSQL_DATABASE=moneywhere
+      - MYSQL_DATABASE=moneynote
     command: [
       '--character-set-server=utf8mb4',
       '--collation-server=utf8mb4_general_ci',
     ]
     volumes:
-      - moneywhere_mysql_data:/var/lib/mysql
+      - moneynote_mysql_data:/var/lib/mysql
     ports:
       - "43740:3306"
 
   phpmyadmin:
-    container_name: moneywhere_phpmyadmin
-    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/phpmyadmin5:latest
+    container_name: moneynote_phpmyadmin
+    image: registry.cn-hangzhou.aliyuncs.com/moneynote/phpmyadmin5:latest
     links:
       - mysql
     environment:
@@ -28,43 +28,43 @@ services:
     ports:
       - "43741:80"
 
-  moneywhere-api-user:
-    container_name: moneywhere_api
+  api:
+    container_name: moneynote_api
     links:
       - mysql
-    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-api-user:latest
+    image: registry.cn-hangzhou.aliyuncs.com/moneynote/moneynote-api:latest
     restart: always
     environment:
       - DB_HOST=mysql
       - DB_PORT=3306
-      - DB_NAME=moneywhere
+      - DB_NAME=moneynote
       - DB_USER=root
       - DB_PASSWORD=${DB_PASSWORD:-78p7gkc1}
       - invite_code=${invite_code:-111111}
     ports:
       - "43742:9092"
 
-  moneywhere-fe-user:
-    container_name: moneywhere_fe
+  pc:
+    container_name: moneynote_pc
     links:
-      - moneywhere-api-user
-    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-fe-user:latest
+      - api
+    image: registry.cn-hangzhou.aliyuncs.com/moneynote/moneynote-pc:latest
     restart: always
     environment:
-      USER_API_HOST: http://moneywhere-api-user:9092
+      USER_API_HOST: http://api:9092
     ports:
       - "43743:80"
 
-  moneywhere-fe-user-mobile:
-    container_name: moneywhere_fe_mobile
+  h5:
+    container_name: moneynote_h5
     links:
-      - moneywhere-api-user
-    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-fe-user-mobile:latest
+      - api
+    image: registry.cn-hangzhou.aliyuncs.com/moneynote/moneynote-h5:latest
     restart: always
     environment:
-      USER_API_HOST: http://moneywhere-api-user:9092
+      USER_API_HOST: http://api:9092
     ports:
       - "43744:80"
 
 volumes:
-  moneywhere_mysql_data:
+  moneynote_mysql_data:

@@ -14,11 +14,11 @@
 
 阿里云镜像启动（适合中国大陆）
 ```sh
-docker run --name moneywhere -e DB_PASSWORD=78p7gkc1 -e invite_code=111111 -v moneywhere_mysql_data:/var/lib/mysql -p 43740:3306 -p 43741:80 -p 43742:9092 -p 43743:81 -p 43744:82 registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-all:latest
+docker run --name moneynote -e DB_PASSWORD=78p7gkc1 -e invite_code=111111 -v moneynote_mysql_data:/var/lib/mysql -p 43740:3306 -p 43741:80 -p 43742:9092 -p 43743:81 -p 43744:82 registry.cn-hangzhou.aliyuncs.com/moneynote/moneynote-all:latest
 ```
 docker hub镜像启动（适合境外用户）
 ```sh
-docker run --name moneywhere -e DB_PASSWORD=78p7gkc1 -e invite_code=111111 -v moneywhere_mysql_data:/var/lib/mysql -p 43740:3306 -p 43741:80 -p 43742:9092 -p 43743:81 -p 43744:82 markliu2018/moneywhere-all:latest
+docker run --name moneynote -e DB_PASSWORD=78p7gkc1 -e invite_code=111111 -v moneynote_mysql_data:/var/lib/mysql -p 43740:3306 -p 43741:80 -p 43742:9092 -p 43743:81 -p 43744:82 markliu2018/moneynote-all:latest
 ```
 
 如果已有mysql服务，可使用不带mysql的镜像启动。
@@ -26,32 +26,32 @@ docker run --name moneywhere -e DB_PASSWORD=78p7gkc1 -e invite_code=111111 -v mo
 阿里云镜像启动（适合中国大陆，此镜像无mysql服务，请将参数修改为自己的mysql服务。）
 
 ```sh
-docker run --name moneywhere -d \
+docker run --name moneynote -d \
 	-e DB_HOST=your_ip \
 	-e DB_PORT=3306 \
-	-e DB_NAME=moneywhere \
+	-e DB_NAME=moneynote \
 	-e DB_USER=root \
     -e DB_PASSWORD=your_password \
 	-e invite_code=111111 \
 	-p 43742:9092 \
 	-p 43743:81 \
 	-p 43744:82 \
-	registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-all-no-mysql:latest
+	registry.cn-hangzhou.aliyuncs.com/moneynote/moneynote-all-no-mysql:latest
 ```
 
 docker hub镜像启动（适合境外用户，此镜像无mysql服务，请将参数修改为自己的mysql服务。）
 ```sh
-docker run --name moneywhere -d \
+docker run --name moneynote -d \
 	-e DB_HOST=your_ip \
 	-e DB_PORT=3306 \
-	-e DB_NAME=moneywhere \
+	-e DB_NAME=moneynote \
 	-e DB_USER=root \
     -e DB_PASSWORD=your_password \
 	-e invite_code=111111 \
 	-p 43742:9092 \
 	-p 43743:81 \
 	-p 43744:82 \
-	markliu2018/moneywhere-all-no-mysql:latest
+	markliu2018/moneynote-all-no-mysql:latest
 ```
 
 ### docker compose 启动（推荐）
@@ -59,7 +59,7 @@ docker run --name moneywhere -d \
 1. 请下载本项目源代码，使用git命令或直接下载源代码。
 
 ```sh
-git clone https://github.com/getmoneynote/docker-compose-moneywhere.git && cd docker-compose-moneywhere
+git clone https://github.com/getmoneynote/docker-compose-moneynote.git && cd docker-compose-moneynote
 ```
 
 2. docker compose 启动
@@ -180,7 +180,7 @@ docker compose -f docker-compose-all-no-mysql-ali.yml pull && docker compose --e
 
 
 ## QA
-1. 很多人安装遇到数据库的问题，有可能是之前安装过，有数据文件，且自己修改过root密码。 使用 docker volume ls 命令查看有没有moneywhere_mysql_data文件，如果有，可以自己修改为另外的数据文件，或者删除moneywhere_mysql_data
+1. 很多人安装遇到数据库的问题，有可能是之前安装过，有数据文件，且自己修改过root密码。 使用 docker volume ls 命令查看有没有moneynote_mysql_data文件，如果有，可以自己修改为另外的数据文件，或者删除moneynote_mysql_data
 
 ## 参考资料
 [安装docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-centos-7)

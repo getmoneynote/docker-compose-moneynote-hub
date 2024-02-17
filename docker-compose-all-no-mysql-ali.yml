@@ -1,16 +1,16 @@
 version: '3'
 
 services:
-  moneywhere:
-    container_name: moneywhere
-    image: registry.cn-hangzhou.aliyuncs.com/moneywhere/moneywhere-all-no-mysql:latest
+  moneynote:
+    container_name: moneynote
+    image: registry.cn-hangzhou.aliyuncs.com/moneynote/moneynote-all-no-mysql:latest
     restart: always
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
       - DB_HOST=${DB_HOST:-host.docker.internal}
       - DB_PORT=${DB_PORT:-3306}
-      - DB_NAME=${DB_NAME:-moneywhere}
+      - DB_NAME=${DB_NAME:-moneynote}
       - DB_USER=${DB_USER:-root}
       - DB_PASSWORD=${DB_PASSWORD:-78p7gkc1}
       - invite_code=${invite_code:-111111}

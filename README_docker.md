@@ -9,5 +9,5 @@ Docker一键运行自己的记账系统
 快速运行：
 
 ```sh
-docker run -p 43741:80 -p 43743:81 -p 43743:82 -e invite_code=111111 markliu2018/moneywhere-all:latest
+docker run -p 43741:80 -p 43743:81 -p 43743:82 -e invite_code=111111 markliu2018/moneynote-all:latest
 ```

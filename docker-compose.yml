@@ -1,15 +1,15 @@
 version: '3'
 
 services:
-  moneywhere:
-    container_name: moneywhere
-    image: markliu2018/moneywhere-all:latest
+  moneynote:
+    container_name: moneynote
+    image: markliu2018/moneynote-all:latest
     restart: always
     environment:
       - DB_PASSWORD=${DB_PASSWORD:-78p7gkc1}
       - invite_code=${invite_code:-111111}
     volumes:
-      - moneywhere_mysql_data:/var/lib/mysql
+      - moneynote_mysql_data:/var/lib/mysql
     ports:
       - "43740:3306"
       - "43741:80"
@@ -18,4 +18,4 @@ services:
       - "43744:82"
 
 volumes:
-  moneywhere_mysql_data:
+  moneynote_mysql_data:
