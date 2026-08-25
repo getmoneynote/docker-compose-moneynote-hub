@@ -4,7 +4,7 @@ services:
   moneynote:
     container_name: moneynote
     image: markliu2018/moneynote-all:latest
-    restart: always
+    restart: no
     environment:
       - DB_PASSWORD=${DB_PASSWORD:-78p7gkc1}
       - invite_code=${invite_code:-111111}
